@@ -1,0 +1,29 @@
+---
+- name: Prepare
+  hosts: all
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Install dependencies
+      ansible.builtin.package:
+        name:
+          - "cronie"  # For the cron script
+          - "hostname"  # For the cron script
+          - "findutils"  # For lynis scans
+          - "passwd"  # For lynis scans
+          - "procps-ng"  # For lynis scans
+          - "net-tools"  # For lynis scans
+          - "iproute"  # For lynis scans
+        state: present
+      when:
+        - ansible_distribution in [ "RedHat", "CentOS", "Amazon", "Rocky", "AlmaLinux", "Fedora" ]
+
+    - name: Install dependencies
+      ansible.builtin.package:
+        name:
+          - "cron"  # To create crontab entry
+          - "hostname"  # For the cron script
+        state: present
+      when:
+        - ansible_os_family == "Debian"

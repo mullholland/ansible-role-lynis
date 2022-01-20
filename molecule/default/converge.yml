@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+  gather_facts: true
+  vars:
+    lynis_report_mail: false  # Dont send mails during testing
+  roles:
+    - role: "ansible-role-lynis"

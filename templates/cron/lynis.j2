@@ -1,0 +1,33 @@
+#!/bin/bash
+set -x
+
+AUDITOR="automated"
+DATE=$(date +%Y%m%d)
+HOST=$(hostname)
+PROFILE="{{ lynis_profile }}"
+LOG_DIR="/var/log/lynis"
+REPORT="${LOG_DIR}/report-${HOST}.${DATE}.log"
+DATA="${LOG_DIR}/report-data-${HOST}.${DATE}.log"
+LOG_EXPIRE={{ lynis_log_expire }}
+{% if ansible_os_family == 'Debian' %}
+LYNIS="/usr/sbin/lynis"
+{% else %}
+LYNIS="/usr/bin/lynis"
+{% endif %}
+
+# Run Lynis
+${LYNIS} audit system --auditor "${AUDITOR}" --profile ${PROFILE} --cronjob > ${REPORT}
+
+# Optional step: Move report file if it exists
+if [ -f /var/log/lynis-report.dat ]; then
+    mv /var/log/lynis-report.dat ${DATA}
+fi
+
+find ${LOG_DIR} -type f -mtime +${LOG_EXPIRE} -delete -print
+
+echo "Lynis audit for ${HOST} on ${DATE}: ${REPORT}"
+{% if lynis_report_mail %}
+FROM="{{ lynis_report_from }}"
+TO="{{ lynis_report_to }}"
+/usr/bin/mail -s "${HOST}: Lynis audit (${DATE})" -r ${FROM} -a ${REPORT} ${TO}
+{% endif %}

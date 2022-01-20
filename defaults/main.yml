@@ -1,0 +1,43 @@
+---
+# cron job vars
+lynis_cron:
+  minute: '5'
+  hour: '0'
+  day: '*'
+  month: '*'
+  weekday: '0'
+# cron script vars
+# send email after scan?
+lynis_report_mail: true
+lynis_report_from: '{{ ansible_hostname}}@domain.tld'
+lynis_report_to: 'security@domain.tld'
+# Days before logs are purged. Defaults to '90'.
+lynis_log_expire: '90'
+
+lynis_profile: "/etc/lynis/ansible.prf"
+# lynis custom profile vars
+# Split in commonly used partes
+# default profile
+# https://raw.githubusercontent.com/CISOfy/lynis/master/default.prf
+# Tests to skip in the audit runs.
+lynis_prf_skip_tests: []
+#  - "SSH-7408"
+# Lynis Enterprise Settings
+lynis_prf_enterprise_options:
+  - "license_key="
+  - "#allow-auto-purge=yes"
+  - "#hostid=40-char-hash"
+  - "#hostid2=64-char-hash"
+  - "license-key="
+  - "#proxy-protocol=https"
+  - "#proxy-server=10.0.1.250"
+  - "#proxy-port=3128"
+  - "#system-groups=groupname1,groupname2,groupname3"
+  - "compliance-standards=cis,hipaa,iso27001,pci-dss"
+  - "#system-customer-name=mycustomer"
+  - "upload=no"
+  - "upload-server="
+  - "upload-options="
+  - "#tags=db,production,ssn-1304"
+lynis_prf_custom_options:
+  - "colors=yes"

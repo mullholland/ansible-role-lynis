@@ -1,0 +1,46 @@
+---
+- block:
+    - name: YUM | Add lynis repository key
+      ansible.builtin.rpm_key:
+        key: "{{ lynis_repository_key[ansible_distribution] }}"
+        state: present
+
+    - name: YUM | Add lynis repo
+      ansible.builtin.template:
+        src: "repository/RedHat.j2"
+        dest: "/etc/yum.repos.d/cisofy-lynis.repo"
+        owner: "root"
+        group: "root"
+        mode: "0644"
+
+  when:
+    - ansible_distribution in [ "RedHat", "CentOS", "Amazon", "Rocky", "AlmaLinux", "Fedora" ]
+
+- block:
+    - name: APT | Add lynis repository key
+      ansible.builtin.apt_key:
+        url: "{{ lynis_repository_key[ansible_distribution] }}"
+        state: present
+
+    - name: APT | Add lynis repo
+      ansible.builtin.template:
+        src: "repository/Debian.j2"
+        dest: "/etc/apt/sources.list.d/cisofy-lynis.list"
+        owner: "root"
+        group: "root"
+        mode: "0644"
+      register: lynis_repository_state
+
+    - name: APT | Update repository cache
+      ansible.builtin.apt:
+        update_cache: true
+      when:
+        - lynis_repository_state.changed
+      # Data should be refreshed immediatly for other roles which depend on them
+      # Flush handlers is not used because it would potentially flush handlers,
+      # which are not meant to be flushed at this poiunt in the playbook
+      tags:
+        - skip_ansible_lint
+
+  when:
+    - ansible_os_family == "Debian"

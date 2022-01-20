@@ -1,0 +1,20 @@
+---
+- name: Install lynis cron job script
+  ansible.builtin.template:
+    src: "cron/lynis.j2"
+    dest: "/usr/local/bin/lynis_scan_cron.sh"
+    owner: root
+    group: root
+    mode: "0750"
+
+- name: Schedule lynis cron job
+  ansible.builtin.cron:
+    name: "Launch Lynis security audit"
+    minute: "{{ lynis_cron.minute }}"
+    hour: "{{ lynis_cron.hour }}"
+    day: "{{ lynis_cron.day }}"
+    month: "{{ lynis_cron.month }}"
+    weekday: "{{ lynis_cron.weekday }}"
+    cron_file: "lynis"
+    user: "root"
+    job: "/usr/local/bin/lynis_cron.sh 2>&1 | logger"

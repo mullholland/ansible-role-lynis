@@ -1,0 +1,10 @@
+---
+lynis_repository_key:
+  RedHat: "https://packages.cisofy.com/keys/cisofy-software-rpms-public.key"
+  CentOS: "https://packages.cisofy.com/keys/cisofy-software-rpms-public.key"
+  Rocky: "https://packages.cisofy.com/keys/cisofy-software-rpms-public.key"
+  AlmaLinux: "https://packages.cisofy.com/keys/cisofy-software-rpms-public.key"
+  Amazon: "https://packages.cisofy.com/keys/cisofy-software-rpms-public.key"
+  Fedora: "https://packages.cisofy.com/keys/cisofy-software-rpms-public.key"
+  Debian: "https://packages.cisofy.com/keys/cisofy-software-public.key"
+  Ubuntu: "https://packages.cisofy.com/keys/cisofy-software-public.key"
