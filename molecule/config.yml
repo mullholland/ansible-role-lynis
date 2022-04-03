@@ -13,7 +13,6 @@ molecule_scenarios:
       - "ubuntu2004"
       - "centos7"
       - "centos-stream8"
-      - "centos-stream9"
       - "ubi8"
       - "fedora34"
       - "fedora35"
