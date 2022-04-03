@@ -10,7 +10,7 @@
 
   tasks:
     - name: SmokeTests
-      debug:
+      ansible.builtin.debug:
         msg:
           - "ansible_version => {{ansible_version}}"
           - "ansible_distribution => {{ ansible_distribution }}"
@@ -81,6 +81,6 @@
       failed_when: (molecule_cron is changed) or (molecule_cron is failed)
 
     - name: Test scan cron
-      command: '/usr/local/bin/lynis_scan_cron.sh'
+      ansible.builtin.command: '/usr/local/bin/lynis_scan_cron.sh'
       register: molecule_script_test
       changed_when: molecule_script_test.rc != 0
