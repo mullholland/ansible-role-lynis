@@ -95,11 +95,12 @@ The machine needs to be prepared in CI this is done using `molecule/default/prep
         - ansible_distribution in [ "RedHat", "CentOS", "Amazon", "Rocky", "AlmaLinux", "Fedora" ]
 
     - name: Install dependencies
-      ansible.builtin.package:
+      ansible.builtin.apt:
         name:
           - "cron"  # To create crontab entry
           - "hostname"  # For the cron script
         state: present
+        update_cache: yes
       when:
         - ansible_os_family == "Debian"
 ```
