@@ -1,5 +1,6 @@
 ---
-- block:
+- name: Add YUM Repository
+  block:
     - name: YUM | Add lynis repository key
       ansible.builtin.rpm_key:
         key: "{{ lynis_repository_key[ansible_distribution] }}"
@@ -16,7 +17,8 @@
   when:
     - ansible_distribution in [ "RedHat", "CentOS", "Amazon", "Rocky", "AlmaLinux", "Fedora" ]
 
-- block:
+- name: Add APT Repository
+  block:
     - name: APT | Add lynis repository key
       ansible.builtin.apt_key:
         url: "{{ lynis_repository_key[ansible_distribution] }}"
