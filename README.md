@@ -21,7 +21,7 @@ lynis_cron:
 # cron script vars
 # send email after scan?
 lynis_report_mail: true
-lynis_report_from: '{{ ansible_hostname}}@domain.tld'
+lynis_report_from: '{{ ansible_hostname }}@domain.tld'
 lynis_report_to: 'security@domain.tld'
 # Days before logs are purged. Defaults to '90'.
 lynis_log_expire: '90'
@@ -122,7 +122,6 @@ This role has been tested on these [container images](https://hub.docker.com/u/m
 -   [centos7](https://hub.docker.com/r/mullholland/docker-molecule-centos7)
 -   [centos-stream8](https://hub.docker.com/r/mullholland/docker-molecule-centos-stream8)
 -   [ubi8](https://hub.docker.com/r/mullholland/docker-molecule-ubi8)
--   [fedora34](https://hub.docker.com/r/mullholland/docker-molecule-fedora34)
 -   [fedora35](https://hub.docker.com/r/mullholland/docker-molecule-fedora35)
 -   [fedora36](https://hub.docker.com/r/mullholland/docker-molecule-fedora36)
 -   [amazonlinux](https://hub.docker.com/r/mullholland/docker-molecule-amazonlinux)
