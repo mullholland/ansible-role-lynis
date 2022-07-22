@@ -75,7 +75,7 @@
         weekday: "0"
         cron_file: "lynis"
         user: "root"
-        job: "/usr/local/bin/lynis_cron.sh 2>&1 | logger"
+        job: "/usr/local/bin/lynis_scan_cron.sh 2>&1 | logger"
       check_mode: true
       register: molecule_cron
       failed_when: (molecule_cron is changed) or (molecule_cron is failed)
