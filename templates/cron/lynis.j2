@@ -29,5 +29,5 @@ echo "Lynis audit for ${HOST} on ${DATE}: ${REPORT}"
 {% if lynis_report_mail %}
 FROM="{{ lynis_report_from }}"
 TO="{{ lynis_report_to }}"
-/usr/bin/mail -s "${HOST}: Lynis audit (${DATE})" -r ${FROM} -a ${REPORT} ${TO}
+echo "See the attached report for details" | /usr/bin/mail -s "${HOST}: Lynis audit (${DATE})" -aFROM:${FROM} -A ${REPORT} ${TO}
 {% endif %}
