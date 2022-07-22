@@ -9,7 +9,7 @@ lynis_cron:
 # cron script vars
 # send email after scan?
 lynis_report_mail: true
-lynis_report_from: '{{ ansible_hostname }}@domain.tld'
+lynis_report_from: '"{{ ansible_hostname }} <noreply@domain.tld>"'
 lynis_report_to: 'security@domain.tld'
 # Days before logs are purged. Defaults to '90'.
 lynis_log_expire: '90'
