@@ -1,5 +1,10 @@
 # [lynis](#lynis)
 
+**IMPORTANT**
+This role will no longer be updated. you can use [robertdebock/ansible-role-lynis](https://github.com/robertdebock/ansible-role-lynis) as an alternative.
+
+---
+
 |GitHub|GitLab|
 |------|------|
 |[![github](https://github.com/mullholland/ansible-role-lynis/workflows/Ansible%20Molecule/badge.svg)](https://github.com/mullholland/ansible-role-lynis/actions)|[![gitlab](https://gitlab.com/mullholland/ansible-role-lynis/badges/main/pipeline.svg)](https://gitlab.com/mullholland/ansible-role-lynis)|
