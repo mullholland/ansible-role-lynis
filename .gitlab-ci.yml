@@ -16,8 +16,6 @@ molecule:
         tag: "7"
       - image: "centos"
         tag: "8"
-      - image: "centos"
-        tag: "latest"
       - image: "amazonlinux"
         tag: "2"
       - image: "fedora"
