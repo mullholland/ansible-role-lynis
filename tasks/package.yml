@@ -1,10 +1,10 @@
 ---
-- name: Install lynis
+- name: Package | Install lynis
   ansible.builtin.package:
     name: "lynis"
     state: present
 
-- name: Create lynis log directory
+- name: Package | Create lynis log directory
   ansible.builtin.file:
     path: "/var/log/lynis"
     mode: 0750
@@ -12,7 +12,7 @@
     group: root
     state: directory
 
-- name: Create custom lynis profile
+- name: Package | Create custom lynis profile
   ansible.builtin.template:
     src: "etc/lynis/custom.prf.j2"
     dest: "{{ lynis_profile }}"
