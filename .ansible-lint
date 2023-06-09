@@ -2,6 +2,11 @@
 #
 # Ansible managed
 #
+
+# Profiles gradually increase the strictness of rules as your Ansible content lifecycle.
+# We set it to "production" in order to ensure that content meets requirements for inclusion in Ansible Automation Platform (AAP) as validated or certified content.
+profile: production
+
 exclude_paths:
   - ./molecule/default/prepare.yml
   - ./molecule/default/converge.yml

@@ -1,4 +1,5 @@
 ---
+
 - name: Scan | Install lynis cron job script
   ansible.builtin.template:
     src: "cron/lynis.j2"

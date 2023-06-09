@@ -9,10 +9,10 @@
     - 'default.yml'
 
 - name: Create repository
-  ansible.builtin.include_tasks: repository.yml
+  ansible.builtin.include_tasks: Repository.yml
 
 - name: Add package
-  ansible.builtin.include_tasks: package.yml
+  ansible.builtin.include_tasks: Package.yml
 
 - name: Add scan
-  ansible.builtin.include_tasks: scan.yml
+  ansible.builtin.include_tasks: Scan.yml

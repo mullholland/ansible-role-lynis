@@ -1,4 +1,5 @@
 ---
+
 - name: Package | Install lynis
   ansible.builtin.package:
     name: "lynis"
