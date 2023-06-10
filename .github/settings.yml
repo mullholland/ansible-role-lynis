@@ -1,0 +1,8 @@
+---
+#
+# Ansible managed
+#
+repository:
+  description: Installs lynis and schedules scans.
+  homepage: https://mullholland.net
+  topics: system, security, ansible, molecule, tox, playbook

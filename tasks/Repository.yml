@@ -1,12 +1,15 @@
 ---
-- name: Add YUM Repository
+
+- name: Repository | Add YUM Repository
+  when:
+    - ansible_distribution in [ "RedHat", "CentOS", "Amazon", "Rocky", "AlmaLinux", "Fedora" ]
   block:
-    - name: YUM | Add lynis repository key
+    - name: Repository | Add lynis yum repository key
       ansible.builtin.rpm_key:
         key: "{{ lynis_repository_key[ansible_distribution] }}"
         state: present
 
-    - name: YUM | Add lynis repo
+    - name: Repository | Add lynis yum repo
       ansible.builtin.template:
         src: "repository/RedHat.j2"
         dest: "/etc/yum.repos.d/cisofy-lynis.repo"
@@ -14,17 +17,17 @@
         group: "root"
         mode: "0644"
 
-  when:
-    - ansible_distribution in [ "RedHat", "CentOS", "Amazon", "Rocky", "AlmaLinux", "Fedora" ]
 
-- name: Add APT Repository
+- name: Repository | Add APT Repository
+  when:
+    - ansible_os_family == "Debian"
   block:
-    - name: APT | Add lynis repository key
+    - name: Repository | Add lynis apt repository key
       ansible.builtin.apt_key:
         url: "{{ lynis_repository_key[ansible_distribution] }}"
         state: present
 
-    - name: APT | Add lynis repo
+    - name: Repository | Add lynis apt repo
       ansible.builtin.template:
         src: "repository/Debian.j2"
         dest: "/etc/apt/sources.list.d/cisofy-lynis.list"
@@ -33,7 +36,7 @@
         mode: "0644"
       register: lynis_repository_state
 
-    - name: APT | Update repository cache
+    - name: Repository | Update repository cache
       ansible.builtin.apt:
         update_cache: true
       when:
@@ -43,6 +46,3 @@
       # which are not meant to be flushed at this poiunt in the playbook
       tags:
         - skip_ansible_lint
-
-  when:
-    - ansible_os_family == "Debian"

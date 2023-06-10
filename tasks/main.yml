@@ -8,11 +8,11 @@
     - '{{ ansible_system }}.yml'
     - 'default.yml'
 
-- name: create repository
-  include_tasks: repository.yml
+- name: Create repository
+  ansible.builtin.include_tasks: Repository.yml
 
-- name: add package
-  include_tasks: package.yml
+- name: Add package
+  ansible.builtin.include_tasks: Package.yml
 
-- name: add scan
-  include_tasks: scan.yml
+- name: Add scan
+  ansible.builtin.include_tasks: Scan.yml
