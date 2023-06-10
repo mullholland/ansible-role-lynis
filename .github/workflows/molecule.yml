@@ -13,6 +13,11 @@ on:
   schedule:
     - cron: '23 12 12 * *'
 
+# If a 403 error occurs, make sure to set content permission to write
+# see: https://github.com/go-semantic-release/action/issues/27
+permissions:
+  contents: write
+
 jobs:
   lint:
     runs-on: ubuntu-20.04
@@ -66,3 +71,16 @@ jobs:
           namespace: mullholland
           image: ${{ matrix.config.image }}
           tag: ${{ matrix.config.tag }}
+
+  release:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    needs:
+      - test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: go-semantic-release/action@v1
+        id: semrel
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          changelog-generator-opt: "emojis=true"
