@@ -2,9 +2,9 @@
 
 Installs lynis and schedules scans.
 
-|GitHub|GitLab|Downloads|Version|
-|------|------|---------|-------|
-|[![github](https://github.com/mullholland/ansible-role-lynis/workflows/Ansible%20Molecule/badge.svg)](https://github.com/mullholland/ansible-role-lynis/actions)|[![gitlab](https://gitlab.com/opensourceunicorn/ansible-role-lynis/badges/master/pipeline.svg)](https://gitlab.com/opensourceunicorn/ansible-role-lynis)|[![downloads](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/mullholland/lynis)|[![Version](https://img.shields.io/github/release/mullholland/ansible-role-lynis.svg)](https://github.com/mullholland/ansible-role-lynis/releases/)|
+|GitHub|Downloads|Version|
+|------|---------|-------|
+|[![github](https://github.com/mullholland/ansible-role-lynis/workflows/Ansible%20Molecule/badge.svg)](https://github.com/mullholland/ansible-role-lynis/actions)|[![downloads](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/mullholland/lynis)|[![Version](https://img.shields.io/github/release/mullholland/ansible-role-lynis.svg)](https://github.com/mullholland/ansible-role-lynis/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
