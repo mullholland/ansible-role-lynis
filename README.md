@@ -4,7 +4,7 @@ Installs lynis and schedules scans.
 
 |GitHub|Downloads|Version|
 |------|---------|-------|
-|[![github](https://github.com/mullholland/ansible-role-lynis/actions/workflows/molecule.yml/badge.svg)](https://github.com/mullholland/ansible-role-lynis/actions/workflows/molecule.yml)|[![downloads](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/mullholland/lynis)|[![Version](https://img.shields.io/github/release/mullholland/ansible-role-lynis.svg)](https://github.com/mullholland/ansible-role-lynis/releases/)|
+|[![github](https://github.com/mullholland/ansible-role-lynis/actions/workflows/molecule.yml/badge.svg)](https://github.com/mullholland/ansible-role-lynis/actions/workflows/molecule.yml)|[![downloads](https://img.shields.io/ansible/role/d/mullholland/lynis)](https://galaxy.ansible.com/mullholland/lynis)|[![Version](https://img.shields.io/github/release/mullholland/ansible-role-lynis.svg)](https://github.com/mullholland/ansible-role-lynis/releases/)|
 ## [Example Playbook](#example-playbook)
 
 This example is taken from [`molecule/default/converge.yml`](https://github.com/mullholland/ansible-role-lynis/blob/master/molecule/default/converge.yml) and is tested on each push, pull request and release.
