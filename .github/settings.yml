@@ -5,4 +5,4 @@
 repository:
   description: Installs lynis and schedules scans.
   homepage: https://mullholland.net
-  topics: system, security, ansible, molecule, tox, playbook
+  topics: system, security, ansible, molecule, playbook

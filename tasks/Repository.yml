@@ -22,10 +22,20 @@
   when:
     - ansible_os_family == "Debian"
   block:
+    - name: Repository | Ensure keyrings directory exists
+      ansible.builtin.file:
+        path: /etc/apt/keyrings
+        state: directory
+        owner: root
+        group: root
+        mode: "0755"
+
     - name: Repository | Add lynis apt repository key
-      ansible.builtin.apt_key:
+      ansible.builtin.get_url:
         url: "{{ lynis_repository_key[ansible_distribution] }}"
-        state: present
+        dest: "{{ lynis_repository_keyring }}"
+        mode: "0644"
+        force: false
 
     - name: Repository | Add lynis apt repo
       ansible.builtin.template:
