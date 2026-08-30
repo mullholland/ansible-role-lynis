@@ -1,4 +1,6 @@
 ---
+lynis_repository_keyring: "/etc/apt/keyrings/cisofy-lynis.asc"
+
 lynis_repository_key:
   RedHat: "https://packages.cisofy.com/keys/cisofy-software-rpms-public.key"
   CentOS: "https://packages.cisofy.com/keys/cisofy-software-rpms-public.key"

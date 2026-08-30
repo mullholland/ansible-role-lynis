@@ -1,4 +1,4 @@
 # {{ ansible_managed }}
 # lynis community repository
 
-deb https://packages.cisofy.com/community/lynis/deb/ stable main
+deb [signed-by={{ lynis_repository_keyring }}] https://packages.cisofy.com/community/lynis/deb/ stable main
